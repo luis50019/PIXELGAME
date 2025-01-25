@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import messageError from "./utils.js";
 import auth from "../firebase/index.js";
+
+import messageError from "./utils.js";
 
 export const useUserStore = defineStore('userState',{
 	state: () => ({ user: null, uid: null, error: null }),
@@ -30,13 +31,25 @@ export const useUserStore = defineStore('userState',{
 				this.uid = null;
 				this.error = null;
 				return{
-					user: null
+					email:null,
+					error: null
 				}
 			} catch (error) {
 				alert("Error al cerrar session");
 			}
 			return;
 		},
+		initializeAuthListener() {
+			return onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user = user.email
+          this.uid = user.uid
+        } else {
+          this.user = null
+          this.uid = null
+        }
+      })
+		}
 		
 	}
 })

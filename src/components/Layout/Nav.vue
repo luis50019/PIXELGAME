@@ -8,11 +8,11 @@
   const {user} = storeToRefs(store);
   const {logout} = store;
 
-  const handlerLogout =  async()=>{
+  const handlerLogout = async()=>{
     try {
       const res = await logout();
-      console.log(res);
-      if(res.user == null){
+      console.log("desdede: "+res.email);
+      if(res.email == null){
         return router.push('/login');
       }
     } catch (error) {
@@ -35,7 +35,10 @@
       <li><RouterLink to="/register" class="nav-link">Register</RouterLink></li>
     </ul>
     <ul v-else class="flex gap-10 text-sm md:text-lg font-bold">
-      <li><button @:click="handlerLogout" class="nav-link ">Logout</button></li>
+      <li class="nav-link font-light">
+        {{user}}
+      </li>
+      <li><button @:click="handlerLogout" class="nav-link-logout ">Logout</button></li>
     </ul>
   </nav>
 </template>
@@ -43,6 +46,11 @@
 <style scoped>
 
 .nav-link {
+  position: relative;
+  text-decoration: none;
+  padding: 4px;
+}
+.nav-link-logout {
   position: relative;
   text-decoration: none;
   padding: 4px;
@@ -55,11 +63,24 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #fff;
+  background-color: #a20adf;
+  transition: width 0.3s ease;
+}
+.nav-link-logout::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Ubica el borde debajo del texto */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #c70085;
   transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
+  width: 100%; 
+}
+.nav-link-logout:hover::after {
   width: 100%; 
 }
 </style>

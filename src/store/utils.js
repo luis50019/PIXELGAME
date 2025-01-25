@@ -1,6 +1,6 @@
 const messageError ={
     "auth/invalid-credential": {
-        message: "Invalid credentials",
+        message: "email or password incorrect",
         type: "Email"
     },
     "auth/missing-password":{
