@@ -1,56 +1,54 @@
 import { createRouter, createWebHistory, useRoute } from "vue-router";
 import {
 	Home,
-	LandigPage,
 	LoginPage,
-	Register
+	Register,
+	LandingPage
 } from "../pages/index.js"
 import { useUserStore } from "../store/index.js";
 import { storeToRefs } from "pinia";
-
-const pathsLogin = ["/home", "/register"];
-const pathsHome = ["/","/login"];
+import { ref } from "vue";
 
 
-const authRequired =async (to, from, next) => {
+const authRequired = async (to, from, next) => {
 	const store = useUserStore();
-	const {user,uid} = storeToRefs(store);
-	const {initializeAuthListener} = store;
-	try {
-
-		initializeAuthListener();
-		const router = useRoute();
-		const path = router.path;
-		console.log("router: "+router.path);
-		if(user.value){
-			console.log(path)
-			if(
-				pathsLogin.includes(to.path) && pathsHome.includes(from.path)
-
-			){
-				next();
-			}
+	const { isAutentication, user } = storeToRefs(store);
+	if (!isAutentication.value) {
+		try {
+			await store.initializeAuthListener(); // Asegúrate de que la autenticación esté cargada
+			
+		} catch (error) {
+			console.log(error)
 		}
-		if(!user.value){
-			if(
-				pathsHome.includes(to.path) && !pathsLogin.includes(from.path)   
-			){
-				next();
-			}
-		}	
-	} catch (error) {
-		console.log(error)
 	}
-	return true;
-}
+	if (user.value) {
+		next();
+	} else {
+		next("/login");
+	}
+};
+
+const redirectIfAuthenticated = async (to, from, next) => {
+	const store = useUserStore();
+	const { isAutentication, user } = storeToRefs(store);
+	if (!isAutentication.value) {
+		await store.initializeAuthListener(); // Asegúrate de que la autenticación esté cargada
+	}
+	if (user.value) {
+		next("/home");
+	} else {
+		next();
+	}
+};
+
 
 
 const routes = [
 	{
 		path: "/",
-		name: "landigPage",
-		component: LandigPage,
-		beforeEnter: authRequired
+		name: "landingPage",
+		component: LandingPage,
+		beforeEnter: redirectIfAuthenticated
 	},
 	{
 		path: "/home",
@@ -62,13 +60,17 @@ const routes = [
 		path: "/login",
 		name:"Login",
 		component: LoginPage,
-		beforeEnter: authRequired
+		beforeEnter: redirectIfAuthenticated
 	},
 	{
 		path:"/register",
 		name:"Register",
 		component:Register,
-		beforeEnter: authRequired
+		beforeEnter: redirectIfAuthenticated
+	},
+	{
+		path: "/:pathMatch(.*)*",
+		redirect: "/"
 	}
 ]
 

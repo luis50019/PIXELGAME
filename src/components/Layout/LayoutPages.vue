@@ -5,7 +5,7 @@
 
 <template>
     <Nav></Nav>
-    <div class="min-h-[90vh] max-h-[95h] min-w-[95vw%] max-w-[95vw%] mt-15 pt-5 pl-8 pr-8">
+    <div class="min-h-[100vh] max-h-[200vh] min-w-[95vw] max-w-[100vw]">
         <RouterView></RouterView>
     </div>
 </template>

@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged,createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase/index.js";
 
 import messageError from "./utils.js";
 
 export const useUserStore = defineStore('userState',{
-	state: () => ({ user: null, uid: null, error: null }),
+	state: () => ({ user: null, uid: null,isAutentication: false, error: null }),
 	getters: {
 		isActiveUser: (state) => ((state.user && state.uid) ? true : false)
 	},
@@ -13,10 +13,10 @@ export const useUserStore = defineStore('userState',{
 		async login(email, password) {
 			try {
 				const userCredential = await signInWithEmailAndPassword(auth, email, password);
-				this.user = userCredential.user;
+				this.user = userCredential.user.email;
 				this.uid = userCredential.user.uid;
 				return {
-					email: this.user.email,
+					user: this.user,
 					uid: this.uid
 				}
 			} catch (error) {
@@ -31,7 +31,7 @@ export const useUserStore = defineStore('userState',{
 				this.uid = null;
 				this.error = null;
 				return{
-					email:null,
+					user:null,
 					error: null
 				}
 			} catch (error) {
@@ -39,17 +39,47 @@ export const useUserStore = defineStore('userState',{
 			}
 			return;
 		},
-		initializeAuthListener() {
-			return onAuthStateChanged(auth, (user) => {
-        if (user) {
-          this.user = user.email
-          this.uid = user.uid
-        } else {
-          this.user = null
-          this.uid = null
+    async registerNewUser(email, password) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        this.user = userCredential.user.email;
+        this.uid = userCredential.user.uid;
+
+        return {
+          user: this.user,
+          uid: this.uid
         }
-      })
+
+
+      } catch (error) {
+        console.log({Error: error})
+      }
+      return ;
+    },
+		async initializeAuthListener() {
+			try {
+				return new Promise((resolve) => {
+					onAuthStateChanged(auth, (user) => {
+						if (user) {
+							this.$patch({
+								user: user.email,
+								uid: user.uid
+							});
+						} else {
+							this.$patch({
+								user: null,
+								uid: null
+							});
+						}
+						this.isAuthLoaded = true; // Marca como cargado
+						resolve();
+					});
+				});
+			} catch (error) {
+				console.log("Error en initializeAuthListener:", error);
+			}
 		}
+		
 		
 	}
 })

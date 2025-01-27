@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="font-sans text-[#fff] flex flex-col relative">
-    <LayoutPages></LayoutPages>
+  <div class="font-sans text-[#fff] h-auto max-w-[100vw] border border-amber-800 flex flex-col relative">
+    <LayoutPages ></LayoutPages>
   </div>
 </template>
 
