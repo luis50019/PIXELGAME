@@ -1,5 +1,5 @@
 export const linkIcon ={
-  'PC': "../../assets/pc.png",
+  'PC': '../../assets/pc.png',
   'PlayStation':"../../assets/playstation.png",
   'Xbox': "../../assets/xbox.png",
   'Nintendo': "../../assets/nintendo.png",
