@@ -25,19 +25,22 @@ getData();
 </script>
 
 <template>
-  <HeaderComp :infoGame="data" />
-  <div class="pl-8 w-[98vw]">
-    <nav class="flex gap-5">
-      <span class="nav-link">Basic information</span>
-      <span class="nav-link">Game top</span>
-      <span class="nav-link">Statistics</span>
-      <span class="nav-link">Team</span>
-    </nav>
-    <div v-if="allGames.length > 0" class="w-[90vw] h-[100vh] grid grid-cols-[repeat(auto-fit,_minmax(320px,1fr))]">
-      <CardGame v-for="game in allGames" :gameInfo="game" :key="game.id" />
-    </div>
-    <div v-else>
-      <p>No games available.</p>
+  <div class="w-full min-h-[80vh]">
+    <HeaderComp :infoGame="data" />
+    <div class="pl-8 w-[98vw]">
+      <nav class="flex gap-5">
+        <span class="nav-link">Basic information</span>
+        <span class="nav-link">Game top</span>
+        <span class="nav-link">Statistics</span>
+        <span class="nav-link">Team</span>
+      </nav>
+      <span class="text-5xl font-bold mt-5 bg-[#0f1016] text-[#a902f7]">Games top</span>
+      <div v-if="allGames.length > 0" class="w-[90vw] mt-2 grid grid-cols-[repeat(auto-fit,_minmax(320px,1fr))] gap-5">
+        <CardGame v-for="game in allGames" :gameInfo="game" :key="game.id" />
+      </div>
+      <div v-else>
+        <p>No games available.</p>
+      </div>
     </div>
   </div>
 </template>

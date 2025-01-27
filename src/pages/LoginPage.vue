@@ -33,7 +33,7 @@
 <template lang="">
   <div class="w-full min-h-[80vh] flex justify-center items-center">
 
-    <form @:submit.prevent="handlerSubmit" class="w-4/4 sm:1/3 md:w-1/3 bg-[#2c2a2a] flex flex-col gap-8 p-8 mt-20 rounded-lg">
+    <form @:submit.prevent="handlerSubmit" class="w-4/4 sm:1/3 md:w-1/4 bg-[#2c2a2a] flex flex-col gap-8 p-8 mt-20 rounded-lg">
 			<h2 class="text-4xl md:text-5xl font-bold text-[##522e93]">Login</h2>
 			<div class="flex flex-col gap-2">
 				<label for="email">Email</label>
