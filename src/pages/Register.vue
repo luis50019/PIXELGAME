@@ -32,22 +32,21 @@
 
 <template lang="">
   <div class="w-full min-h-[80vh] flex justify-center items-center">
-
-    <form @:submit.prevent="handlerSubmit" class="w-4/4 sm:1/3 md:w-1/4 bg-[#2c2a2a] flex flex-col gap-8 p-8 mt-20 rounded-lg">
-			<h2 class="text-4xl md:text-5xl font-bold text-[##522e93]">Register</h2>
+    <form @:submit.prevent="handlerSubmit" class="w-3/4 lg:w-1/4 bg-[#f3f2f1] flex flex-col gap-8 p-8 mt-20 rounded-lg">
+			<h2 class="text-4xl md:text-5xl font-bold text-[#006838]">Register</h2>
 			<div class="flex flex-col gap-2">
-				<label for="email">Email</label>
+				<label for="email" class="text-[#B18423]">Email</label>
 				<input type="email" name="email" placeholder="Email"  v-model="email"
-				class="w-full border-b bg-transparent outline-none border-[#646161] mt-2">
+				class="w-full border-b bg-transparent outline-none border-[#006838] text-[#000] mt-2">
 			</div>
 			<div class="flex flex-col gap-2">
-				<label for="password">Password</label>
+				<label for="password" class="text-[#B18423]">Password</label>
 				<input type="password" name="passsword" placeholder="*****" v-model="password"	
-				class="w-full border-b bg-transparent outline-none border-[#646161] mt-2" autocomplete="on">
+				class="w-full border-b bg-transparent outline-none border-[#006838] text-[#000] mt-2" autocomplete="on">
 				<span class="text-[#df2f2f] h-2 text-sm p-0">{{error?.message}}</span>
 			</div>
-			<button type="submit" :disabled="isActive" class="bg-[#9b15da] p-1 rounded-xl text-xl" >Register</button>
-			<span>Are you already registered? <RouterLink to ="/login" class="text-[#b951e9]">login</RouterLink></span>
+			<button type="submit" :disabled="isActive" class="bg-[#006838] disabled:bg-[#2f463b] p-1 rounded-xl text-xl" >Register</button>
+			<span class="text-[#B18423]">Are you already registered? <RouterLink to ="/login" class="text-[#006838] nav-link-login">login</RouterLink></span>
 		</form>
 
   </div>
