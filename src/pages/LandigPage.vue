@@ -18,7 +18,7 @@
         <button
           class="bg-[#FFB81C] text-black  hover:bg-[#ffa500] text-lg rounded-lg px-2 py-1 mt-3"
         >
-          <RouterLink class="text-md text-[#ffffff] font-bold">conoce mas</RouterLink>
+          <RouterLink to="/login" class="text-md text-[#ffffff] font-bold">conoce mas</RouterLink>
         </button>
       </div>
       <div
