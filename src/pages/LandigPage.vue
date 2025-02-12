@@ -13,7 +13,7 @@
           Construyendo Futuros Juntos
         </h1>
         <span class="text-sm lg:text-md font-light text-[#fff] max-w-[80%]"
-          >Nova Universitas y COBAO unidos para tu educación superior</span
+          >NovaUniversitas y COBAO unidos para tu educación superior</span
         >
         <button
           class="bg-[#FFB81C] text-black  hover:bg-[#ffa500] text-lg rounded-lg px-2 py-1 mt-3"
@@ -40,7 +40,7 @@
         <h2
           class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#006838]"
         >
-          ¿Por qué Nova Universitas?
+          ¿Por qué NovaUniversitas?
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-white p-6 rounded-lg shadow-md">
