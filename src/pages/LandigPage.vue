@@ -3,12 +3,12 @@
 <template lang="">
   <div class="text-2xl max-w-[100vw] h-[100vh]">
     <div
-      class="text-[#000] pt-28 lg:pt-0 h-[36rem] lg:h-[70vh] flex flex-col lg:flex-row lg:items-center 
+      class="text-[#000] pt-28 lg:pt-0 h-[30rem] lg:h-[70vh] flex flex-col lg:flex-row lg:items-center 
 			 lg:justify-around  headerLanding"
     >
       <div class="flex flex-col pl-5 lg:pl-0 lg:max-w-[60%] items-start">
         <h1
-          class="font-extrabold text-[#fff] text-6xl lg:text-[6rem] xl:text-[6rem] 2xl:text-[5rem] mim-w-[22rem] mb-5"
+          class="font-extrabold text-[#fff] text-5xl lg:text-[6rem] xl:text-[6rem] 2xl:text-[5rem] mim-w-[22rem] mb-5"
         >
           Construyendo Futuros Juntos
         </h1>
@@ -25,12 +25,12 @@
         class="flex flex-row lg:mt-0 pl-5 lg:pl-0 justify-start gap-12 lg:gap-5 items-end lg:max-w-[30%]"
       >
         <div class="p-5 rounded-lg">
-          <img src="../assets/logoTres.png" class="bg-cover h-36 lg:h-50" />
+          <img src="../assets/logoTres.png" class="bg-cover h-24 lg:h-50" />
         </div>
         <div class=" pt-2 rounded-lg">
           <img
             src="../assets/logo_cobao-removebg-preview.png"
-            class="bg-cover h-36 lg:h-50"
+            class="bg-cover h-24 lg:h-50"
           />
         </div>
       </div>
