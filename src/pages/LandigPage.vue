@@ -3,8 +3,8 @@
 <template lang="">
   <div class="text-2xl max-w-[100vw] h-[100vh]">
     <div
-      class="text-[#000] pt-28 lg:pt-0 h-[55vh] lg:h-[80vh] flex flex-col lg:flex-row lg:items-center 
-			justify-around lg:justify-around lg:gap-32 headerLanding"
+      class="text-[#000] pt-28 lg:pt-0 h-[34rem] lg:h-[80vh] flex flex-col lg:flex-row lg:items-center 
+			 lg:justify-around lg:gap-32 headerLanding"
     >
       <div class="flex flex-col pl-5 lg:pl-0 lg:max-w-[50%] items-start">
         <h1
@@ -16,18 +16,18 @@
           >Nova Universitas y COBAO unidos para tu educación superior</span
         >
         <button
-          class="bg-[#FFB81C] text-black hover:bg-[#ffa500] text-lg rounded-lg px-2 py-1 mt-3"
+          class="bg-[#FFB81C] text-black  hover:bg-[#ffa500] text-lg rounded-lg px-2 py-1 mt-3"
         >
           <RouterLink class="text-md text-[#ffffff] font-bold">conoce mas</RouterLink>
         </button>
       </div>
       <div
-        class="flex flex-row mt-5 lg:mt-0 pl-5 lg:pl-0 justify-start gap-12 lg:gap-5 items-end lg:max-w-[50%]"
+        class="flex flex-row lg:mt-0 pl-5 lg:pl-0 justify-start gap-12 lg:gap-5 items-end lg:max-w-[50%]"
       >
-        <div class="bg-[#fff] p-5 rounded-lg">
+        <div class="p-5 rounded-lg">
           <img src="../assets/logoTres.png" class="bg-cover h-24 lg:h-72" />
         </div>
-        <div class="bg-[#fff] pt-2 rounded-lg">
+        <div class=" pt-2 rounded-lg">
           <img
             src="../assets/logo_cobao-removebg-preview.png"
             class="bg-cover h-24 lg:h-60"
