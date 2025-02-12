@@ -30,7 +30,7 @@
         <div class=" pt-2 rounded-lg">
           <img
             src="../assets/logo_cobao-removebg-preview.png"
-            class="bg-cover h-24 lg:h-60"
+            class="bg-cover h-28 lg:h-72"
           />
         </div>
       </div>

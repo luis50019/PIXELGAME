@@ -29,7 +29,7 @@
     text-[#fff] flex items-end justify-between px-7 py-15 z-20" >
     <span class="inline-block text-3xl md:text-5xl font-oswald">
       <RouterLink to="/" class="text-[#222] flex items-end gap-1">
-        <img src="../../assets/logoTres.png" class="h-12 bg-[#fff] rounded-sm px-2 py-1"/>
+        <img src="../../assets/logoTres.png" class="h-12 rounded-sm px-2 py-1"/>
       </RouterLink>
     </span>
     <ul v-if="user==null" class="flex gap-2 lg:gap-10  text-[#fff] text-sm font-bold">
