@@ -14,6 +14,7 @@ export const getAllGames = async () => {
 	try {
 		const response = await fetch(`${BASE_URL}games?key=${API_KEY}`);
 		const data = await response.json();
+		console.log(data.results)
 		return data.results;
 	} catch (error) {
 		console.log(error)

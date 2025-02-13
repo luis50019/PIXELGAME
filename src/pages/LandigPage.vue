@@ -18,16 +18,16 @@
         <button
           class="bg-[#FFB81C] text-black hover:bg-[#ffa500] text-lg rounded-[10px] px-2  mt-3"
         >
-          <RouterLink to="/login" class="text-sm text-[#ffffff] font-bold">conoce mas</RouterLink>
+          <RouterLink to="/login" class="text-sm text-[#ffffff] font-bold">Conoce más</RouterLink>
         </button>
       </div>
       <div
-        class="flex flex-row lg:mt-0 pl-5 lg:pl-0 justify-start gap-12 lg:gap-5 items-end lg:max-w-[30%]"
+        class="flex flex-row lg:mt-0 pl-5 pt-5 lg:pl-0 justify-start gap-12 lg:gap-5 items-end lg:max-w-[30%]"
       >
-        <div class="p-5 rounded-lg">
+        <div class="rounded-lg">
           <img src="../assets/logoTres.png" class="bg-cover h-24 lg:h-50" />
         </div>
-        <div class=" pt-2 rounded-lg">
+        <div class="rounded-lg">
           <img
             src="../assets/logo_cobao-removebg-preview.png"
             class="bg-cover h-24 lg:h-50"
@@ -38,7 +38,7 @@
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2
-          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#006838]"
+          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#006838] animate-pulse-fade"
         >
           ¿Por qué NovaUniversitas?
         </h2>
@@ -89,4 +89,14 @@
   background: -webkit-linear-gradient(171deg, #008f45, #08683b, #091b08);
   background: linear-gradient(171deg, #008f45, #08683b, #091b08);
 }
+@keyframes pulse-fade {
+  0%{opacity: 0;}
+	50%{opacity: 1;}
+	75%{opacity: .8
+		;}
+  100% { opacity: 0; }
+}
+.animate-pulse-fade {
+  animation: pulse-fade 5s ease-in-out infinite;
+ }
 </style>

@@ -1,51 +1,83 @@
 <script setup>
-  import {RouterLink,useRouter} from 'vue-router'
-  import {useUserStore} from "../../store/index.js"
-  import {storeToRefs} from "pinia"
+import { ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+import { useUserStore } from "../../store/index.js"
+import { storeToRefs } from "pinia"
+import { Menu, X } from 'lucide-vue-next'
 
-  const router = useRouter();
-  const store = useUserStore();
-  const {user} = storeToRefs(store);
-  const {logout} = store;
+const router = useRouter();
+const store = useUserStore();
+const { user } = storeToRefs(store);
+const { logout } = store;
 
-  const handlerLogout = async()=>{
-    try {
-      const res = await logout();
-      console.log("desdede: "+res.user);
-      if(res.user == null){
-        return router.push('/login');
-      }
-    } catch (error) {
-      console.log("Error:",error);
+const isMenuOpen = ref(false)
+
+const handlerLogout = async () => {
+  try {
+    const res = await logout();
+    console.log("desdede: " + res.user);
+    if (res.user == null) {
+      return router.push('/login');
     }
+  } catch (error) {
+    console.log("Error:", error);
   }
+}
 
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
-
-<template lang="">
-  <nav
-    class="h-16 absolute min-w-[98vw] max-w-[100vw] bg-transparent
-    text-[#fff] flex items-end justify-between px-7 py-15 z-20" >
-    <span class="inline-block text-3xl md:text-5xl font-oswald">
-      <RouterLink to="/" class="text-[#222] flex items-end gap-1">
-        <img src="../../assets/logoTres.png" class="h-12 rounded-sm px-2 py-1"/>
+<template>
+  <nav :class="['absolute top-0 left-0 w-full z-50 py-4 px-6', {'bg-[#0a0a0a]': isMenuOpen}]">
+    <div class="container mx-auto flex justify-between items-center">
+      <RouterLink to="/" class="text-[#222] flex items-center gap-1">
+        <img src="../../assets/logoTres.png" class=" h-10 lg:h-14 rounded-sm" alt="Logo" />
       </RouterLink>
-    </span>
-    <ul v-if="user==null" class="flex gap-2 lg:gap-10  text-[#fff] text-sm font-bold">
-      <li><RouterLink to="/login" class="nav-link-login text-[#0c381e] rounded-lg lg:px-4 px-4 py-0 lg:py-[2px] text-xl">Login</RouterLink></li>
-      <li><RouterLink to="/register" class="nav-link-register rounded-lg text-[#B18423] lg:px-4 px-4 py-0 lg:py-[2px] text-xl ">Register</RouterLink></li>
-    </ul>
-    <ul v-else class="flex gap-10 text-sm md:text-lg font-bold">
-      <li class="nav-link font-light">
-        {{user}}
-      </li>
-      <li><button @:click="handlerLogout" class="nav-link-logout ">Logout</button></li>
-    </ul>
+
+      <!-- Mobile menu button -->
+      <button @click="toggleMenu" class="lg:hidden text-[#fff] hover:text-[#aaa]">
+        <Menu v-if="!isMenuOpen"/>
+        <X v-else  />
+      </button>
+
+      <!-- Desktop menu -->
+      <div class="hidden lg:flex items-center space-x-8">
+        <template v-if="user">
+          <RouterLink to="/movies" class="nav-link-login text-[#fff]">Movies</RouterLink>
+          <RouterLink to="/series" class="nav-link-login text-[#fff]">Series</RouterLink>
+          <RouterLink to="/posts" class="nav-link-login text-[#fff]">Posts</RouterLink>
+          <RouterLink to="/games" class="nav-link-login text-[#fff]">Games</RouterLink>
+          <span class="nav-link text-white">{{ user }}</span>
+          <button @click="handlerLogout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+        </template>
+        <template v-else>
+          <RouterLink to="/login" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Login</RouterLink>
+          <RouterLink to="/register" class=" bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Register</RouterLink>
+        </template>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div v-if="isMenuOpen" class="lg:hidden mt-4 space-y-4">
+      <template v-if="user" >
+        <RouterLink to="/movies" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Movies</RouterLink>
+        <RouterLink to="/series" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Series</RouterLink>
+        <RouterLink to="/posts" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Posts</RouterLink>
+        <RouterLink to="/games" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Games</RouterLink>
+        <span class="text-[#fff]">{{ user }}</span>
+        <button @click="handlerLogout" class="block w-full text-left bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+      </template>
+      <template v-else>
+        <RouterLink to="/login" class="block nav-link-login bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" @click="toggleMenu">Login</RouterLink>
+        <RouterLink to="/register" class="block nav-link-register bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" @click="toggleMenu">Register</RouterLink>
+      </template>
+    </div>
   </nav>
 </template>
 
 <style scoped>
-
-
+/* Add any additional styles here */
 </style>
+
