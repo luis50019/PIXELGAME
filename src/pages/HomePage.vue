@@ -57,7 +57,7 @@ getData();
       <span class="text-5xl lg:text-7xl font-bold mt-5 text-[#05c005]">Games top</span>
       <div
         v-if="allGames.length > 0"
-        class="w-[90vw] mt-2 grid grid-cols-[repeat(auto-fit,_minmax(320px,1fr))] gap-5"
+        class="w-[90vw] mt-2 grid items-center place-items-center grid-cols-[repeat(auto-fit,_minmax(300px,1fr))] gap-5"
       >
         <CardGame v-for="game in allGames" :gameInfo="game" :key="game.id" />
       </div>
