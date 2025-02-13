@@ -17,7 +17,8 @@ const handlerLogout = async () => {
     const res = await logout();
     console.log("desdede: " + res.user);
     if (res.user == null) {
-      return router.push('/login');
+      isMenuOpen.value=false;
+      return router.push('/');
     }
   } catch (error) {
     console.log("Error:", error);
