@@ -31,8 +31,11 @@
 </script>
 
 <template lang="">
-  <div class="w-full min-h-[80vh] flex justify-center items-center">
-    <form @:submit.prevent="handlerSubmit" class="w-3/4 lg:w-1/4 bg-[#f3f2f1] flex flex-col gap-8 p-8 mt-20 rounded-lg">
+  <div class="w-full min-h-[80vh] flex flex-col justify-center items-center">
+		<RouterLink to="/" class="mt-20 w-3/4 lg:w-1/4">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeyYYQoEgxkkb--x4sumfAFiCVx7aFiHFt0w&s" class="w-10"/>
+		</RouterLink>
+    <form @:submit.prevent="handlerSubmit" class="w-3/4 lg:w-1/4 bg-[#f3f2f1] flex flex-col gap-8 p-8 rounded-lg">
 			<h2 class="text-4xl md:text-5xl font-bold text-[#006838]">Register</h2>
 			<div class="flex flex-col gap-2">
 				<label for="email" class="text-[#B18423]">Email</label>
