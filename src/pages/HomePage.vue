@@ -44,7 +44,7 @@ getData();
         ¡Play now!
       </button>
     </div>
-    <div className="w-full lg:w-1/2 h-48 md:h-64 lg:h-auto">
+    <div className="w-full lg:w-1/2 h-64 lg:h-auto">
       <img
         src="https://www.techspot.com/images2/news/bigimage/2021/03/2021-03-31-image-17.jpg"
         alt="Juego Destacado"
