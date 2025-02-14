@@ -42,6 +42,12 @@
   transform: scale(1);
   transition:all 1s ease-in,transform 1s ease;
 }
+@media (width <= 1024px) {
+    .card-pelicula{
+      box-sizing: content-box;
+      height: 42rem;
+    }
+  }
 .cont-image{
   min-height: 25rem;
   box-sizing: border-box;

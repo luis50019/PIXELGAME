@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="card-pelicula flex flex-col gap-3">
+  <div class="card-pelicula  flex flex-col gap-3">
     <div class="cont-image ">
       <img  :src="BASE_URL_IMG + movie.poster_path" alt="imagen de una pelicula">
     </div>
@@ -42,64 +42,71 @@
   position: relative;
   transform: scale(1);
   transition:all 1s ease-in,transform 1s ease;
-}
-.cont-image{
-  min-height: 25rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
+  }
+  .cont-image{
+    min-height: 25rem;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
 
-img{
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  border-radius: 15px;
-  position: absolute;
-  z-index: 200;
-  transition: all 1s ease-in;
-}
-.descripcion{
-  padding-top: 15px;
-  padding: 0px 8px;
-  min-height: 16rem;
-  max-height: 50%;
-  overflow: auto;
-}
-.cont-info{
-  position: absolute;
-  height: 100%;
-  color: transparent;
-  transition: all .5s ease-in
-}
-.card-pelicula:hover{
-  border: 1px solid #304764;
-  transform: scale(1.02);
-  box-shadow: .5px .2px 15px 1px #24364b;
-  transition:all .5s ease-in, transform .5s ease;
-}
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 200;
+    transition: all 1s ease-in;
+  }
+  .descripcion{
+    padding-top: 15px;
+    padding: 0px 8px;
+    min-height: 16rem;
+    max-height: 50%;
+    overflow: auto;
+  }
+  .cont-info{
+    position: absolute;
+    height: 100%;
+    color: transparent;
+    transition: all .5s ease-in
+  }
+  .card-pelicula:hover{
+    border: 1px solid #304764;
+    transform: scale(1.02);
+    box-shadow: .5px .2px 15px 1px #24364b;
+    transition:all .5s ease-in, transform .5s ease;
+  }
 
-.card-pelicula:hover > .cont-info{
-  z-index: 200;
-  backdrop-filter: blur(4px) brightness(50%);
-  width: 100%;
-  color: #fff;
-  border-radius: 15px;
-  transition: z-index .5s ease-in, backdrop-filter .2s ease-in, color .5s ease-in;
-}
-.card-pelicula:hover > .cont-image >img{
-  z-index: 100;
-  transition: object-fit 1s ease-in;
-}
-#listaActores{
-  width: 100%;
-  max-height: 80%;
-  overflow: auto;
-  list-style: none;
-}
+  .card-pelicula:hover > .cont-info{
+    z-index: 200;
+    backdrop-filter: blur(4px) brightness(50%);
+    width: 100%;
+    color: #fff;
+    border-radius: 15px;
+    transition: z-index .5s ease-in, backdrop-filter .2s ease-in, color .5s ease-in;
+  }
+  .card-pelicula:hover > .cont-image >img{
+    z-index: 100;
+    transition: object-fit 1s ease-in;
+  }
+  #listaActores{
+    width: 100%;
+    max-height: 80%;
+    overflow: auto;
+    list-style: none;
+  }
 
-details{
-  max-width: 100%;
-  height: 200px;
-}
+  details{
+    max-width: 100%;
+    height: 200px;
+  }
+
+  @media (width <= 1024px) {
+    .card-pelicula{
+      box-sizing: content-box;
+      height: 42rem;
+    }
+  }
 
 </style>
