@@ -69,6 +69,33 @@ const routes = [
 		beforeEnter: redirectIfAuthenticated
 	},
 	{
+		path:"/tv",
+		name:"tv",
+		component:()=>import('../TV/pages/HomeTv.vue'),
+		beforeEnter:authRequired
+	},
+	{
+		path:'/tv/serie/:id?',
+		name:'serie',
+		component:()=> import('../TV/pages/SerieSelect.vue'),
+		beforeEnter:authRequired
+	},
+	{
+		path:'/movies',
+		name:'movies',
+		component:()=> import('../movie/pages/HomeMovie.vue')
+	},
+	{
+		path:'/movie/:id?',
+		name:'movie',
+		component:()=> import('../movie/pages/MovieSelect.vue')
+	},
+	{
+		path:'/posts',
+		name:'posts',
+		component:()=> import('../posts/HomePost.vue')
+	},
+	{
 		path: "/:pathMatch(.*)*",
 		redirect: "/"
 	}

@@ -14,7 +14,7 @@
 
 <template> 
 
-  <div class="text-[#03183d] h-[45rem] pb-5 w-[300px] bg-transparent rounded-lg shadow-lg flex flex-col">
+  <div class="text-[#03183d] h-[45rem] pb-5 w-[300px] hover:scale-[1.02]  bg-transparent rounded-lg shadow-lg flex flex-col">
     <img :src="gameInfo.background_image" class="imgGame" alt="">
     <div class="h-32 pl-2 mt-2">
       <span class="text-4xl font-bold">{{ gameInfo.name }}</span>

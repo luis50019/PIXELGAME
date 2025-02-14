@@ -1,11 +1,14 @@
 <script setup>
 import HeaderComp from "../components/Layout/HeaderComp.vue";
 import CardGame from "../components/Cards/CardGame.vue";
+import Footer from "../components/Layout/Footer.vue";
+import Loader from "../components/UI/Loader.vue";
 import { getAllGames, getGametop } from "../api/api";
 import { ref } from "vue";
 
 const data = ref({});
 const allGames = ref([]);
+const isLoading = ref(true)
 
 const getData = async () => {
   try {
@@ -14,6 +17,7 @@ const getData = async () => {
     const resAllGame = await getAllGames();
 
     console.log(resAllGame);
+    isLoading.value=false;
     allGames.value = resAllGame;
     data.value = res[id] || null;
   } catch (error) {
@@ -25,7 +29,8 @@ getData();
 </script>
 
 <template>
-  <div class="w-full min-h-[80vh]">
+  <Loader v-if="isLoading" ></Loader>
+  <div v-else class="w-full min-h-[80vh]">
     <HeaderComp :infoGame="data" />
     <div className="bg-gradient-to-b from-[#034b03] to-15%-[#ccdfca] rounded-xl overflow-hidden shadow-2xl mx-auto mt-8 md:mt-12 lg:mt-20 w-[90%] md:w-[85%] lg:w-3/4">
   <div className="flex flex-col lg:flex-row">
@@ -53,7 +58,7 @@ getData();
     </div>
   </div>
 </div>
-    <div class="w-[98vw] m-auto mt-24 flex flex-col items-center gap-15">
+    <div class="w-[98vw] m-auto mt-24 flex flex-col items-center gap-15 mb-5">
       <span class="text-5xl lg:text-7xl font-bold mt-5 text-[#05c005]">Games top</span>
       <div
         v-if="allGames.length > 0"
@@ -66,45 +71,7 @@ getData();
       </div>
     </div>
   </div>
-  <footer className="bg-gray-800 text-white py-8 mt-10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">GameNova</h3>
-            <p className="text-gray-400">Tu destino para los mejores juegos y experiencias virtuales.</p>
-          </div>
-          <div>
-            <h4 className="text-xl font-semibold mb-4">Enlaces Rápidos</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Catálogo
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Ofertas
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Soporte
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-        </div>
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; 2025 GameZone. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </footer>
+  <Footer v-if="!isLoading"></Footer>
 </template>
 
 <style lang=""></style>

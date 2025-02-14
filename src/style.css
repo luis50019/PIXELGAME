@@ -65,3 +65,27 @@
 .nav-link-logout:hover::after {
   width: 100%;
 }
+
+.cont::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+.contenedor::-webkit-scrollbar{
+  -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical{
+  width:5px;
+}
+
+.contenedor::-webkit-scrollbar-thumb{
+  border-radius: 20px;
+  border: 1px solid #fff;
+}
+
+.contenedor::-webkit-scrollbar-track{
+  border-radius: 10px;  
+}
+
+.contenedor::-webkit-scrollbar:horizontal {
+  height: 5px;
+}

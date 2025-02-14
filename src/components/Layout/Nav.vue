@@ -47,7 +47,7 @@ const toggleMenu = () => {
       <div class="hidden lg:flex items-center space-x-8">
         <template v-if="user">
           <RouterLink to="/movies" class="nav-link-login text-[#fff]">Movies</RouterLink>
-          <RouterLink to="/series" class="nav-link-login text-[#fff]">Series</RouterLink>
+          <RouterLink to="/tv" class="nav-link-login text-[#fff]">Tv</RouterLink>
           <RouterLink to="/posts" class="nav-link-login text-[#fff]">Posts</RouterLink>
           <RouterLink to="/games" class="nav-link-login text-[#fff]">Games</RouterLink>
           <span class="nav-link text-white">{{ user }}</span>
@@ -64,7 +64,7 @@ const toggleMenu = () => {
     <div v-if="isMenuOpen" class="lg:hidden mt-4 space-y-4">
       <template v-if="user" >
         <RouterLink to="/movies" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Movies</RouterLink>
-        <RouterLink to="/series" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Series</RouterLink>
+        <RouterLink to="/tv" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">tv</RouterLink>
         <RouterLink to="/posts" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Posts</RouterLink>
         <RouterLink to="/games" class="block nav-link-login text-[#fff] hover:text-gray-400" @click="toggleMenu">Games</RouterLink>
         <span class="text-[#fff]">{{ user }}</span>
